@@ -1,0 +1,19 @@
+<h1>{{user.displayName}}</h1>
+<img [src]="user.photoURL" alt="">
+<button (click)="logout()">
+  Logout
+</button>
+
+<textarea [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
+<input type="submit" value="Add a Post" (click)="addPost()">
+
+<ul *ngFor="let post of posts | async">
+  <li (click)="getPost(post.id)">
+    <img [src]="post.data.photo" alt="">
+    <span>
+        <strong>{{post.data.username}}: </strong>
+        <span>{{post.data.content}}</span>
+    </span>
+    
+  </li>
+</ul>
